@@ -5,7 +5,7 @@ If you're looking for the official ISO file, you can find it [here](https://ubun
 
 Initially, this configuration was tailored for [Manjaro 22.1.3](https://manjaro.org/) using the minimalist [Gnome 4](https://www.gnome.org/) desktop.
 However, due to stability concerns, I migrated to Ubuntu on July 30, 2023.
-If you're interested in the initial Manjaro setup, you can check out the associated git tag ([v0.1](https://github.com/le-chartreux/linux-config/tree/v0.1)) that corresponds to the last Manjaro-supporting commit.
+If you're interested in the initial Manjaro setup, you can check out the associated git tag ([1.0.0](https://github.com/le-chartreux/linux-config/tree/1.0.0)) that corresponds to the last Manjaro-supporting commit.
 
 This configuration primarily involves executing Shell commands.
 By using these commands, you can simplify the installation and customization processes without needing to navigate intricate settings menus.
@@ -69,7 +69,7 @@ These tools might be essential for other parts of the configuration process.
       - [Visual Studio Code](#visual-studio-code)
       - [PyCharm Professional](#pycharm-professional)
     - [Python](#python)
-      - [bpython](#bpython) 
+      - [bpython](#bpython)
   - [CLI](#cli)
     - [Gnome terminal](#gnome-terminal)
     - [Zsh](#zsh)
