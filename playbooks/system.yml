@@ -1,0 +1,44 @@
+---
+- name: Configure some misc system settings
+  hosts: localhost
+  connection: local
+  become: true
+  tasks:
+    - name: Set the hostname to the model of the computer
+      ansible.builtin.hostname:
+        name: "{{ ansible_product_version | trim | split(' ') | first | lower }}"
+
+    - name: Use UTC for hardware clock to avoid dualboot problems
+      community.general.timezone:
+        hwclock: "UTC"
+
+    - name: Update firmware
+      block:
+        - name: Refresh fwupd manager
+          ansible.builtin.command: fwupdmgr refresh
+          register: fwupdmgr_output
+          changed_when: fwupdmgr_output.rc != 2
+          failed_when: fwupdmgr_output.rc != 0 and fwupdmgr_output.rc != 2
+
+        - name: Update devices
+          ansible.builtin.command: fwupdmgr update --assume-yes
+          register: fwupdmgr_output
+          changed_when: "'Successfully installed firmware' in fwupdmgr_output.stdout"
+
+    - name: Optimizations
+      block:
+        - name: Disable NetworkManager-wait-online.service for faster booting
+          ansible.builtin.systemd:
+            name: NetworkManager-wait-online.service
+            enabled: false
+
+        - name: Remove org.gnome.Software.desktop from autostart as it's useless
+          ansible.builtin.file:
+            path: /etc/xdg/autostart/org.gnome.Software.desktop
+            state: absent
+
+        - name: Enable TRIM enhance SSD performance.
+          ansible.builtin.systemd:
+            name: fstrim.timer
+            enabled: true
+            state: started

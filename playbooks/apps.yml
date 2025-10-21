@@ -1,0 +1,124 @@
+---
+- name: Configure the applications
+  hosts: localhost
+  connection: local
+  become: true
+  tasks:
+    - name: Update dnf packages
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+        update_only: true
+
+    - name: Upgrade dnf's 'core' group
+      ansible.builtin.dnf:
+        name: "@core"
+        state: latest
+      tags:
+        - skip_ansible_lint # Because updating group may install new packages.
+
+    - name: Install LibreWolf & set it as the default web browser
+      block:
+        - name: Download LibreWolf repo file
+          ansible.builtin.get_url:
+            url: "https://repo.librewolf.net/librewolf.repo"
+            dest: "/etc/yum.repos.d/librewolf.repo"
+            owner: root
+            group: root
+            mode: "0644"
+
+        - name: Install LibreWolf
+          ansible.builtin.dnf:
+            name: "librewolf"
+            state: present
+            enablerepo: librewolf
+            update_cache: true
+
+        - name: Get current default browser
+          ansible.builtin.command: xdg-settings get default-web-browser
+          register: current_browser
+          changed_when: false
+
+        - name: Set LibreWolf as default browser if not already
+          ansible.builtin.command: xdg-settings set default-web-browser librewolf.desktop
+          when: current_browser.stdout != "librewolf.desktop"
+          become: false
+          changed_when: true
+
+        - name: Customize LibreWolf via policies.json (extensions & settings)
+          ansible.builtin.copy:
+            src: librewolf-policies.json
+            dest: /usr/share/librewolf/distribution/policies.json
+            owner: root
+            group: root
+            mode: "0644"
+
+    - name: Install ExtensionManager
+      community.general.flatpak:
+        name: com.mattjakeman.ExtensionManager
+
+    - name: Install Legcord (custom Discord client)
+      ansible.builtin.dnf:
+        name: legcord
+
+    - name: Install VSCode
+      community.general.snap:
+        name: code
+        classic: true
+
+    - name: Install CLI tools
+      block:
+        - name: Install bat (cat with color)
+          ansible.builtin.dnf:
+            name: bat
+
+        - name: Install eza (better ls)
+          ansible.builtin.dnf:
+            name: eza
+
+        - name: Install zoxide (better cd)
+          ansible.builtin.dnf:
+            name: zoxide
+
+        - name: Install Neovim (newer Vim)
+          ansible.builtin.dnf:
+            name: neovim
+
+        - name: Install tmux (terminal multiplexer)
+          ansible.builtin.dnf:
+            name: tmux
+
+        - name: Install fzf (fuzzy finder)
+          ansible.builtin.dnf:
+            name: fzf
+
+        - name: Install wl-clipboard (for wl-copy)
+          ansible.builtin.dnf:
+            name: wl-clipboard
+
+        - name: Install bpython
+          become: false
+          community.general.pipx:
+            name: bpython
+            executable: /usr/bin/pipx
+            state: present
+
+    - name: Install spellcheckers
+      block:
+        - name: Install English spellchecker
+          ansible.builtin.dnf:
+            name: langpacks-en
+
+        - name: Install French spellchecker
+          ansible.builtin.dnf:
+            name: langpacks-fr
+
+        - name: Install LanguageTool spellchecker
+          community.general.snap:
+            name: languagetool
+
+    - name: Install dev apps
+      block:
+        - name: Install Kitty (terminal emulator)
+          ansible.builtin.dnf:
+            name: kitty

@@ -1,0 +1,2 @@
+# This file contains ignores rule violations for ansible-lint
+playbooks/site.yml name[play] skip # No need to name playbooks in site.yml as they're just imports.

@@ -1,0 +1,44 @@
+---
+- name: Configure the keyboard
+  hosts: localhost
+  become: true
+  gather_facts: false
+
+  vars:
+    # Set to your actual keyboard device.
+    # To do so, use sudo evtest and find the right event, then replace event3.
+    keyboard_event_device: /sys/class/input/event3/device/modalias
+
+  tasks:
+    - name: Read keyboard MODALIAS
+      ansible.builtin.slurp:
+        src: "{{ keyboard_event_device }}"
+      register: modalias_raw
+
+    - name: Decode MODALIAS
+      ansible.builtin.set_fact:
+        keyboard_modalias: "{{ (modalias_raw.content | b64decode | trim).split('-')[0] }}"
+
+    - name: Create hwdb file for key remaps
+      ansible.builtin.copy:
+        dest: /etc/udev/hwdb.d/90-keyboard-remaps.hwdb
+        content: |
+          evdev:{{ keyboard_modalias }}*
+           KEYBOARD_KEY_c9=reserved  # PAGEUP disabled
+           KEYBOARD_KEY_d1=reserved  # PAGEDOWN disabled
+           KEYBOARD_KEY_29=102nd     # ² to ><
+        owner: root
+        group: root
+        mode: "0644"
+      notify:
+        - Update hwdb database
+        - Trigger udev to apply changes
+
+  handlers:
+    - name: Update hwdb database
+      ansible.builtin.command: systemd-hwdb update
+      changed_when: true
+
+    - name: Trigger udev to apply changes
+      ansible.builtin.command: udevadm trigger
+      changed_when: true

@@ -1,0 +1,53 @@
+---
+- name: Enable H/W video acceleration
+  hosts: localhost
+  connection: local
+  become: true
+  tasks:
+    - name: Enable H/W video decoding with VA-API
+      block:
+        - name: Install common packages
+          ansible.builtin.dnf:
+            name:
+              - ffmpeg-libs
+              - libva
+              - libva-utils
+            state: present
+            allowerasing: true # Else it conflicts with a different implementation.
+
+        - name: Enable for Intel CPUs
+          ansible.builtin.dnf:
+            name:
+              - intel-media-driver
+              - libva-intel-driver
+            state: present
+            allowerasing: true
+          when: "'GenuineIntel' in ansible_processor"
+
+        - name: Enable for AMD CPUs
+          ansible.builtin.dnf:
+            name:
+              - mesa-va-drivers-freeworld
+              - mesa-vdpau-drivers-freeworld
+              - mesa-va-drivers-freeworld.i686
+              - mesa-vdpau-drivers-freeworld.i686
+            state: present
+            allowerasing: true
+          when: "'AuthenticAMD' in ansible_processor"
+
+    - name: Enable OpenH264 for Firefox
+      block:
+        - name: Install required packages
+          ansible.builtin.dnf:
+            name:
+              - openh264
+              - gstreamer1-plugin-openh264
+              - mozilla-openh264
+            state: present
+
+        - name: Enable fedora-cisco-openh264 repo if not enabled
+          ansible.builtin.command: dnf config-manager setopt fedora-cisco-openh264.enabled=1
+          when:
+            - lookup('ansible.builtin.ini', 'enabled', section='fedora-cisco-openh264', file='/etc/yum.repos.d/fedora-cisco-openh264.repo') != '1'
+            - lookup('ansible.builtin.ini', 'enabled', section='fedora-cisco-openh264', file='/etc/dnf/repos.override.d/99-config_manager.repo') != '1'
+          changed_when: true
