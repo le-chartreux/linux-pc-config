@@ -1,0 +1,13 @@
+---
+- name: Configure fonts
+  hosts: localhost
+  connection: local
+  become: true
+  tasks:
+    - name: Enable che/nerd-fonts Copr repository
+      community.general.copr:
+        name: che/nerd-fonts
+
+    - name: Install nerd-fonts
+      ansible.builtin.dnf:
+        name: nerd-fonts

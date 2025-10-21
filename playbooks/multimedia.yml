@@ -1,0 +1,30 @@
+---
+- name: Upgrade multimedia and install required packages
+  hosts: localhost
+  connection: local
+  become: true
+  tasks:
+    - name: Upgrade multimedia group
+      ansible.builtin.dnf:
+        name: "@multimedia"
+        state: latest
+      tags:
+        - skip_ansible_lint # Because updating group may install new packages.
+
+    - name: Switch to full FFMPEG package and erase 'ffmpeg-free'
+      ansible.builtin.dnf:
+        name: ffmpeg
+        state: present
+        allowerasing: true
+
+    - name: Installs gstreamer components
+      ansible.builtin.dnf:
+        name: "@multimedia"
+        state: present
+        install_weak_deps: false
+        exclude: PackageKit-gstreamer-plugin
+
+    - name: Install sound and video complementary packages
+      ansible.builtin.dnf:
+        name: "@sound-and-video"
+        state: present

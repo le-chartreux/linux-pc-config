@@ -1,0 +1,24 @@
+---
+- name: Configure the dotfiles
+  hosts: localhost
+  connection: local
+  become: false
+
+  vars:
+    stow_repo: https://github.com/le-chartreux/dotfiles.git
+    stow_destination_name: .dotfiles
+
+  tasks:
+    - name: Install stow
+      ansible.builtin.dnf:
+        name: stow
+      become: true
+
+    - name: Clone stow repo
+      ansible.builtin.git:
+        repo: "{{ stow_repo }}"
+        dest: "{{ ansible_env.HOME }}/{{ stow_destination_name }}"
+
+    - name: Get dotfiles from ~/dotfiles
+      ansible.builtin.command: "stow -d ~/{{ stow_destination_name }} ."
+      changed_when: true

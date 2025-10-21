@@ -1,0 +1,18 @@
+---
+- name: Configure zsh
+  hosts: localhost
+  connection: local
+  become: false
+  vars:
+    the_user: "{{ ansible_user_id }}"
+  tasks:
+    - name: Install zsh
+      become: true
+      ansible.builtin.dnf:
+        name: zsh
+
+    - name: Set default shell of user to zsh
+      become: true
+      ansible.builtin.user:
+        user: "{{ the_user }}"
+        shell: /bin/zsh
