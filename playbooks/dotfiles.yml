@@ -5,19 +5,33 @@
   become: false
 
   vars:
-    stow_repo: https://github.com/le-chartreux/dotfiles.git
+    stow_repo_ssh: git@github.com:le-chartreux/dotfiles.git
+    stow_repo_https: https://github.com/le-chartreux/dotfiles.git
     stow_destination_name: .dotfiles
 
   tasks:
     - name: Install stow
-      ansible.builtin.dnf:
+      community.general.pacman:
         name: stow
       become: true
 
-    - name: Clone stow repo
-      ansible.builtin.git:
-        repo: "{{ stow_repo }}"
-        dest: "{{ ansible_env.HOME }}/{{ stow_destination_name }}"
+    - name: Clone stow repo, using SSH if possible, else HTTPS
+      block:
+        - name: Test SSH connection to GitHub using SSH
+          ansible.builtin.command: "ssh -T git@github.com"
+          register: ssh_test
+          changed_when: false
+          ignore_errors: true
+          failed_when: false
+
+        - name: Check SSH available for GitHub
+          ansible.builtin.set_fact:
+            ssh_available_for_github: "{{ \"You've successfully authenticated\" in ssh_test.stderr }}"
+
+        - name: Clone dotfiles repository using SSH if available, else HTTPS
+          ansible.builtin.git:
+            repo: "{{ stow_repo_ssh if ssh_available_for_github else stow_repo_https }}"
+            dest: "{{ ansible_env.HOME }}/{{ stow_destination_name }}"
 
     - name: Get dotfiles from ~/dotfiles
       ansible.builtin.command: "stow -d ~/{{ stow_destination_name }} ."
