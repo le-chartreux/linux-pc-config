@@ -38,7 +38,9 @@ Many tasks are inspired by [devangshekhawat's Fedora-42-Post-Install-Guide](http
    pip install .
    ```
 
-3. Run the full configuration playbook:
+3. Adapt the `vars` on the playbooks (e.g., keyboard device in *keyboard.yml*).
+
+4. Run the full configuration playbook:
 
    ```bash
    ansible-playbook playbooks/site.yml --ask-become-pass --verbose
