@@ -19,7 +19,6 @@ Many tasks are inspired by [devangshekhawat's Fedora-42-Post-Install-Guide](http
   - [✋ Manual Steps](#-manual-steps)
     - [🦑 GitHub SSH Key Setup](#-github-ssh-key-setup)
     - [🔄 Reboot](#-reboot)
-  - [🧪 For Development](#-for-development)
 
 ## 🐧 Usage
 
@@ -35,12 +34,18 @@ Many tasks are inspired by [devangshekhawat's Fedora-42-Post-Install-Guide](http
    ```bash
    python -m venv .venv
    source .venv/bin/activate
-   pip install .
+   pip install .  # pip install -e ".[dev]" for development
    ```
 
-3. Adapt the `vars` on the playbooks (e.g., keyboard device in *keyboard.yml*).
+3. Install the needed Ansible plugins:
 
-4. Run the full configuration playbook:
+   ```bash
+   ansible-galaxy install -r requirements.yml
+   ```
+
+4. Adapt the `vars` on the playbooks (e.g., keyboard device in *keyboard.yml*).
+
+5. Run the full configuration playbook:
 
    ```bash
    ansible-playbook playbooks/site.yml --ask-become-pass --verbose
@@ -80,14 +85,3 @@ Please perform these manually after the playbook run.
 ### 🔄 Reboot
 
 Finally, restart your computer to apply all system-level changes.
-
-## 🧪 For Development
-
-Set up a development environment:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -e ".[dev]"
-activate-global-python-argcomplete --user
-```
