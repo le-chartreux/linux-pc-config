@@ -28,6 +28,7 @@ Many tasks are inspired by [devangshekhawat's Fedora-42-Post-Install-Guide](http
    ```bash
    git clone https://github.com/le-chartreux/linux-pc-config.git
    # Also change the branch if necessary.
+   cd linux-pc-config/
    ```
 
 2. Create a virtual environment:
