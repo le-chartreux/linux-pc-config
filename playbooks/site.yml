@@ -11,5 +11,4 @@
 - import_playbook: video-acceleration.yml
 - import_playbook: multimedia.yml
 - import_playbook: apps.yml
-- import_playbook: gnome.yml
 - import_playbook: keyboard.yml
