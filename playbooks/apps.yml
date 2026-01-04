@@ -125,3 +125,27 @@
             state: present
 
     # TODO: uninstall unused preinstalled apps
+
+    - name: Uninstall unsued preinstalled apps
+      community.general.pacman:
+        name:
+          - libreoffice-fresh
+          - 1password-beta
+          - 1password-cli
+          - github-cli
+        state: absent
+
+    - name: Uninstall unused preinstalled webapps
+      ansible.builtin.command: omarchy-webapp-remove "{{ item }}"
+      loop:
+        - Basecamp
+        - GitHub
+        - Google Contacts
+        - Google Messages
+        - Google Photos
+        - HEY
+        - WhatsApp
+        - X
+        - YouTube
+        - Zoom
+      become: false
