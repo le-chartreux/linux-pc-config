@@ -5,8 +5,8 @@
   become: false
 
   vars:
-    stow_repo: https://github.com/le-chartreux/dotfiles.git
-    stow_destination_name: .dotfiles
+    stow_repo: git@github.com:le-chartreux/dotfiles.git  
+    stow_destination_name: dotfiles
 
   tasks:
     - name: Install stow
