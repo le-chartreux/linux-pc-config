@@ -7,7 +7,7 @@ If you want to adapt it to your needs, feel free to [fork it](https://github.com
 Many tasks are inspired by [devangshekhawat's Fedora-43-Post-Install-Guide](https://github.com/devangshekhawat/Fedora-43-Post-Install-Guide) - thanks for the excellent base!
 
 > [!NOTE]  
-> Only tested on my Lenovo ThinkPad X1 Carbon Gen 10 (dual-boot with Windows 11).
+> Tested only on my Lenovo ThinkPad X1 Carbon Gen 10. Should work with a dual-boot setup alongside Windows 11 (it was working before I stopped dual-booting).
 
 ## 📑 Table of Contents
 
@@ -23,15 +23,17 @@ Many tasks are inspired by [devangshekhawat's Fedora-43-Post-Install-Guide](http
 
 ## 🐧 Usage
 
-1. Clone the repository:
+1. Set up your GitHub SSH key (see [here](#-github-ssh-key-setup)) to enable cloning via SSH.
+
+2. Clone the repository:
 
    ```bash
-   git clone https://github.com/le-chartreux/linux-pc-config.git
+   git clone git@github.com:le-chartreux/linux-pc-config.git
    # Also change the branch if necessary.
    cd linux-pc-config/
    ```
 
-2. Create a virtual environment:
+3. Create a virtual environment:
 
    ```bash
    python -m venv .venv
@@ -39,11 +41,13 @@ Many tasks are inspired by [devangshekhawat's Fedora-43-Post-Install-Guide](http
    pip install .
    ```
 
-3. Run the full configuration playbook:
+4. Run the full configuration playbook:
 
    ```bash
    ansible-playbook playbooks/site.yml --ask-become-pass --verbose
    ```
+
+5. Restart your computer to apply all system-level changes.
 
 ## 🛠️ Troubleshooting
 
@@ -56,8 +60,7 @@ If you get an error related to */boot/efi* during the `Update devices` task:
 
 ## ✋ Manual Steps
 
-Some steps can't (yet) be automated.
-Please perform these manually after the playbook run.
+Some steps aren’t automated because they either can’t be or would be too invasive.
 
 ### 🦑 GitHub SSH Key Setup
 
@@ -75,10 +78,6 @@ Please perform these manually after the playbook run.
 
 3. Add the key to your GitHub account:  
    👉 [GitHub SSH Keys](https://github.com/settings/ssh/new)
-
-### 🔄 Reboot
-
-Finally, restart your computer to apply all system-level changes.
 
 ## 🧪 For Development
 
