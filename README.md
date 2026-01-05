@@ -1,10 +1,10 @@
 # linux-pc-config 💻🐧🔧
 
-[Ansible](https://www.ansible.com/) playbooks to configure a freshly installed [Fedora Linux 42 Workstation](https://fedoraproject.org/workstation/download).
+[Ansible](https://www.ansible.com/) playbooks to configure a freshly installed [Fedora Linux 43 Workstation](https://fedoraproject.org/workstation/download).
 
 If you want to adapt it to your needs, feel free to [fork it](https://github.com/le-chartreux/linux-pc-config/fork)!
 
-Many tasks are inspired by [devangshekhawat's Fedora-42-Post-Install-Guide](https://github.com/devangshekhawat/Fedora-42-Post-Install-Guide) - thanks for the excellent base!
+Many tasks are inspired by [devangshekhawat's Fedora-43-Post-Install-Guide](https://github.com/devangshekhawat/Fedora-43-Post-Install-Guide) - thanks for the excellent base!
 
 > [!NOTE]  
 > Only tested on my Lenovo ThinkPad X1 Carbon Gen 10 (dual-boot with Windows 11).
