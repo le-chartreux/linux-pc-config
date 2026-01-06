@@ -8,13 +8,13 @@
     - name: Install CLI applications available on DNF
       ansible.builtin.dnf:
         name:
-          - bat  # cat with color
-          - eza  # better ls
-          - zoxide  # better cd
-          - neovim  # newer Vim
-          - tmux  # terminal multiplexer
-          - fzf  # fuzzy finder
-          - wl-clipboard  # for wl-copy
+          - bat # cat with color
+          - eza # better ls
+          - zoxide # better cd
+          - neovim # newer Vim
+          - tmux # terminal multiplexer
+          - fzf # fuzzy finder
+          - wl-clipboard # for wl-copy
 
     - name: Install bpython
       become: false
