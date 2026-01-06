@@ -100,3 +100,8 @@
     - name: Install ExtensionManager
       community.general.flatpak:
         name: com.mattjakeman.ExtensionManager
+
+    - name: Set favorite apps
+      community.general.dconf:
+        key: /org/gnome/shell/favorite-apps
+        value: "['librewolf.desktop', 'org.gnome.Nautilus.desktop', 'kitty.desktop']"
