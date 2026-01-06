@@ -23,7 +23,7 @@
               - libva-intel-driver
             state: present
             allowerasing: true
-          when: "'GenuineIntel' in ansible_processor"
+          when: "'GenuineIntel' in ansible_facts['processor']"
 
         - name: Enable for AMD CPUs
           ansible.builtin.dnf:
@@ -34,7 +34,7 @@
               - mesa-vdpau-drivers-freeworld.i686
             state: present
             allowerasing: true
-          when: "'AuthenticAMD' in ansible_processor"
+          when: "'AuthenticAMD' in ansible_facts['processor']"
 
     - name: Enable OpenH264 for Firefox
       block:

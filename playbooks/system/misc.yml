@@ -7,7 +7,7 @@
   tasks:
     - name: Set the hostname to the model of the computer
       ansible.builtin.hostname:
-        name: "{{ ansible_product_version | trim | split(' ') | first | lower }}"
+        name: "{{ ansible_facts['product_version'] | trim | split(' ') | first | lower }}"
 
     - name: Use UTC for hardware clock to avoid dualboot problems
       community.general.timezone:
