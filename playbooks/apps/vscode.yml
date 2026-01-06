@@ -1,0 +1,37 @@
+---
+- name: Install & configure VSCode
+  hosts: localhost
+  connection: local
+  become: false
+
+  vars:
+    extensions_to_install:
+      - catppuccin.catppuccin-vsc
+      - charliermarsh.ruff
+      - ms-python.debugpy
+      - ms-python.python
+      - ms-python.vscode-pylance
+      - ms-python.vscode-python-envs
+      - pkief.material-icon-theme
+      - redhat.ansible
+      - redhat.vscode-yaml
+
+  tasks:
+    - name: Install VSCode
+      community.general.snap:
+        name: code
+        classic: true
+      become: true
+
+    - name: List VSCode's extensions
+      ansible.builtin.command: code --list-extensions
+      register: installed_extensions
+      changed_when: false
+
+    - name: Install VSCode's extensions
+      ansible.builtin.command: code --install-extension {{ item }}
+      loop: "{{ extensions_to_install }}"
+      when: item not in installed_extensions.stdout_lines
+      changed_when: true
+
+    # Settings are managed by stow.

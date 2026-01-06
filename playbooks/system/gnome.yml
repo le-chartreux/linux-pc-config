@@ -3,6 +3,7 @@
   hosts: localhost
   connection: local
   become: false
+
   tasks:
     - name: Install psutil (required to work with dconf)
       become: true
@@ -95,3 +96,7 @@
                 - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name", value: "'System Monitor'" }
                 - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command", value: "'gnome-system-monitor'" }
                 - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding", value: "'<Shift><Control>Escape'" }
+
+    - name: Install ExtensionManager
+      community.general.flatpak:
+        name: com.mattjakeman.ExtensionManager

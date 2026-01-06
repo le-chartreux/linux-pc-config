@@ -3,6 +3,7 @@
   hosts: localhost
   connection: local
   become: true
+
   tasks:
     - name: Set the hostname to the model of the computer
       ansible.builtin.hostname:

@@ -3,6 +3,7 @@
   hosts: localhost
   connection: local
   become: true
+
   tasks:
     - name: Enable che/nerd-fonts Copr repository
       community.general.copr:

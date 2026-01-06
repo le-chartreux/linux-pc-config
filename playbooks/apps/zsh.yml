@@ -3,8 +3,10 @@
   hosts: localhost
   connection: local
   become: false
+
   vars:
     the_user: "{{ ansible_user_id }}"
+
   tasks:
     - name: Install zsh
       become: true

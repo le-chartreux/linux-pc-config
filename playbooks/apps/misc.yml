@@ -1,0 +1,32 @@
+---
+- name: Install & configure the misc applications
+  hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: Install CLI applications available on DNF
+      ansible.builtin.dnf:
+        name:
+          - bat  # cat with color
+          - eza  # better ls
+          - zoxide  # better cd
+          - neovim  # newer Vim
+          - tmux  # terminal multiplexer
+          - fzf  # fuzzy finder
+          - wl-clipboard  # for wl-copy
+
+    - name: Install bpython
+      become: false
+      community.general.pipx:
+        name: bpython
+        executable: /usr/bin/pipx
+        state: present
+
+    - name: Install Legcord (custom Discord client)
+      ansible.builtin.dnf:
+        name: legcord
+
+    - name: Install Kitty (terminal emulator)
+      ansible.builtin.dnf:
+        name: kitty

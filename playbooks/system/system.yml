@@ -1,0 +1,14 @@
+---
+- name: Configure the system
+  hosts: localhost
+  connection: local
+  become: true
+
+- import_playbook: installers.yml
+- import_playbook: fonts.yml
+- import_playbook: gnome.yml
+- import_playbook: keyboard.yml
+- import_playbook: misc.yml
+- import_playbook: multimedia.yml
+- import_playbook: spellcheckers.yml
+- import_playbook: video-acceleration.yml

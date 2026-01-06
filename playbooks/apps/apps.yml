@@ -1,0 +1,9 @@
+---
+- name: Install & configure user applications
+  hosts: localhost
+  connection: local
+
+- import_playbook: librewolf.yml
+- import_playbook: misc.yml
+- import_playbook: vscode.yml
+- import_playbook: zsh.yml

@@ -1,0 +1,18 @@
+---
+- name: Install spellcheckers
+  hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: Install English spellchecker
+      ansible.builtin.dnf:
+        name: langpacks-en
+
+    - name: Install French spellchecker
+      ansible.builtin.dnf:
+        name: langpacks-fr
+
+    - name: Install LanguageTool spellchecker
+      community.general.snap:
+        name: languagetool

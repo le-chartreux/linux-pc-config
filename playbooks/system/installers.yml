@@ -3,11 +3,25 @@
   hosts: localhost
   connection: local
   become: true
+
   tasks:
     - name: Install python3-libdnf5 (required to work with dnf)
       ansible.builtin.command: "dnf install python3-libdnf5 --assumeyes"
       register: my_output
       changed_when: my_output.stdout != "Nothing to do."
+
+    - name: Update dnf packages
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+        update_only: true
+
+    - name: Upgrade dnf's 'core' group
+      ansible.builtin.dnf:
+        name: "@core"
+        state: latest
+      tags:
+        - skip_ansible_lint # Because updating group may install new packages.
 
     - name: Add more RPM repositories
       block:

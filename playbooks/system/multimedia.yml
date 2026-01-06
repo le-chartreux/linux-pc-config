@@ -3,6 +3,7 @@
   hosts: localhost
   connection: local
   become: true
+
   tasks:
     - name: Upgrade multimedia group
       ansible.builtin.dnf:

@@ -1,0 +1,41 @@
+---
+- name: Install & configure LibreWolf
+  hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: Download LibreWolf repo file
+      ansible.builtin.get_url:
+        url: "https://repo.librewolf.net/librewolf.repo"
+        dest: "/etc/yum.repos.d/librewolf.repo"
+        owner: root
+        group: root
+        mode: "0644"
+
+    - name: Install LibreWolf
+      ansible.builtin.dnf:
+        name: "librewolf"
+        state: present
+        enablerepo: librewolf
+        update_cache: true
+
+    - name: Get current default browser
+      ansible.builtin.command: xdg-settings get default-web-browser
+      register: current_browser
+      changed_when: false
+      become: false
+
+    - name: Set LibreWolf as default browser if not already
+      ansible.builtin.command: xdg-settings set default-web-browser librewolf.desktop
+      when: current_browser.stdout != "librewolf.desktop"
+      become: false
+      changed_when: true
+
+    - name: Customize LibreWolf via policies.json (extensions & settings)
+      ansible.builtin.copy:
+        src: librewolf-policies.json
+        dest: /usr/share/librewolf/distribution/policies.json
+        owner: root
+        group: root
+        mode: "0644"
