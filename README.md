@@ -15,15 +15,15 @@ Many tasks are inspired by [devangshekhawat's Fedora-43-Post-Install-Guide](http
   - [📑 Table of Contents](#-table-of-contents)
   - [🐧 Usage](#-usage)
   - [🛠️ Troubleshooting](#️-troubleshooting)
-    - [EFI Partition Error](#efi-partition-error)
+    - [💿 EFI Partition Error](#-efi-partition-error)
   - [✋ Manual Steps](#-manual-steps)
-    - [🦑 GitHub SSH Key Setup](#-github-ssh-key-setup)
-    - [🔄 Reboot](#-reboot)
+    - [🦑 GitHub SSH Key](#-github-ssh-key)
+    - [👆 Fingerprint Login](#-fingerprint-login)
   - [🧪 For Development](#-for-development)
 
 ## 🐧 Usage
 
-1. Set up your GitHub SSH key (see [here](#-github-ssh-key-setup)) to enable cloning via SSH.
+1. [Set up your GitHub SSH key](#-github-ssh-key) to enable cloning via SSH.
 
 2. Clone the repository:
 
@@ -49,9 +49,11 @@ Many tasks are inspired by [devangshekhawat's Fedora-43-Post-Install-Guide](http
 
 5. Restart your computer to apply all system-level changes.
 
+6. Do the [manual steps](#-manual-steps) you haven't done yet.
+
 ## 🛠️ Troubleshooting
 
-### EFI Partition Error
+### 💿 EFI Partition Error
 
 If you get an error related to */boot/efi* during the `Update devices` task:
 
@@ -62,7 +64,7 @@ If you get an error related to */boot/efi* during the `Update devices` task:
 
 Some steps aren’t automated because they either can’t be or would be too invasive.
 
-### 🦑 GitHub SSH Key Setup
+### 🦑 GitHub SSH Key
 
 1. Generate an SSH key:
 
@@ -79,6 +81,10 @@ Some steps aren’t automated because they either can’t be or would be too inv
 3. Add the key to your GitHub account:  
    👉 [GitHub SSH Keys](https://github.com/settings/ssh/new)
 
+### 👆 Fingerprint Login
+
+Go to *Settings / System / Users / Fingerprint Login* to enable fingerpint login.
+
 ## 🧪 For Development
 
 Set up a development environment:
@@ -87,5 +93,4 @@ Set up a development environment:
 python -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
-activate-global-python-argcomplete --user
 ```
