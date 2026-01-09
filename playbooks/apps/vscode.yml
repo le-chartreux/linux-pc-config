@@ -8,6 +8,7 @@
     extensions_to_install:
       - catppuccin.catppuccin-vsc
       - charliermarsh.ruff
+      - davidanson.vscode-markdownlint
       - ms-python.debugpy
       - ms-python.python
       - ms-python.vscode-pylance
@@ -15,6 +16,7 @@
       - pkief.material-icon-theme
       - redhat.ansible
       - redhat.vscode-yaml
+      - yzhang.markdown-all-in-one
 
   tasks:
     - name: Install VSCode
