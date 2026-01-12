@@ -27,6 +27,10 @@
       ansible.builtin.dnf:
         name: legcord
 
+    - name: Install Signal
+      community.general.flatpak:
+        name: org.signal.Signal
+
     - name: Install Kitty (terminal emulator)
       ansible.builtin.dnf:
         name: kitty
