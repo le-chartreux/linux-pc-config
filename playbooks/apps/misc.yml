@@ -10,8 +10,10 @@
         name:
           - bat # cat with color
           - eza # better ls
+          - fd-find # newer find
           - fzf # fuzzy finder
           - neovim # newer Vim
+          - ripgrep # better grep
           - tmux # terminal multiplexer
           - wl-clipboard # for wl-copy
           - zoxide # better cd
