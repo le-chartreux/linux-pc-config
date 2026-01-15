@@ -10,11 +10,11 @@
         name:
           - bat # cat with color
           - eza # better ls
-          - zoxide # better cd
+          - fzf # fuzzy finder
           - neovim # newer Vim
           - tmux # terminal multiplexer
-          - fzf # fuzzy finder
           - wl-clipboard # for wl-copy
+          - zoxide # better cd
 
     - name: Install bpython
       become: false
