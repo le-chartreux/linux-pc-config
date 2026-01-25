@@ -18,7 +18,6 @@ Many tasks are inspired by [devangshekhawat's Fedora-43-Post-Install-Guide](http
     - [💿 EFI Partition Error](#-efi-partition-error)
   - [✋ Manual Steps](#-manual-steps)
     - [🦑 GitHub SSH Key](#-github-ssh-key)
-    - [👆 Fingerprint Login](#-fingerprint-login)
   - [🧪 For Development](#-for-development)
 
 ## 🐧 Usage
@@ -80,10 +79,6 @@ Some steps aren’t automated because they either can’t be or would be too inv
 
 3. Add the key to your GitHub account:  
    👉 [GitHub SSH Keys](https://github.com/settings/ssh/new)
-
-### 👆 Fingerprint Login
-
-Go to *Settings / System / Users / Fingerprint Login* to enable fingerpint login.
 
 ## 🧪 For Development
 
