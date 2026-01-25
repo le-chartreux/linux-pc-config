@@ -20,10 +20,10 @@
         key: /org/gnome/desktop/peripherals/touchpad/tap-to-click
         value: true
 
-    - name: Use 4 workspaces
+    - name: Use 8 workspaces by default
       community.general.dconf:
         key: /org/gnome/desktop/wm/preferences/num-workspaces
-        value: 4
+        value: 8
 
     - name: Disable dynamic workspaces
       community.general.dconf:
@@ -47,16 +47,31 @@
             - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-2", value: "['<Super>F2']" }
             - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-3", value: "['<Super>F3']" }
             - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-4", value: "['<Super>F4']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-5", value: "['<Super>F5']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-6", value: "['<Super>F6']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-7", value: "['<Super>F7']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-8", value: "['<Super>F8']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-9", value: "['<Super>F9']" }
             # Clear app switch shortcuts
             - { key: "/org/gnome/shell/keybindings/switch-to-application-1", value: "@as []" }
             - { key: "/org/gnome/shell/keybindings/switch-to-application-2", value: "@as []" }
             - { key: "/org/gnome/shell/keybindings/switch-to-application-3", value: "@as []" }
             - { key: "/org/gnome/shell/keybindings/switch-to-application-4", value: "@as []" }
+            - { key: "/org/gnome/shell/keybindings/switch-to-application-5", value: "@as []" }
+            - { key: "/org/gnome/shell/keybindings/switch-to-application-6", value: "@as []" }
+            - { key: "/org/gnome/shell/keybindings/switch-to-application-7", value: "@as []" }
+            - { key: "/org/gnome/shell/keybindings/switch-to-application-8", value: "@as []" }
+            - { key: "/org/gnome/shell/keybindings/switch-to-application-9", value: "@as []" }
             # Workspace switching
             - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-1", value: "['<Super>1']" }
             - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-2", value: "['<Super>2']" }
             - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-3", value: "['<Super>3']" }
             - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-4", value: "['<Super>4']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-5", value: "['<Super>5']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-6", value: "['<Super>6']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-7", value: "['<Super>7']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-8", value: "['<Super>8']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-9", value: "['<Super>9']" }
 
         - name: Enable custom keybindings
           block:
@@ -97,11 +112,12 @@
                 - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command", value: "'gnome-system-monitor'" }
                 - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding", value: "'<Shift><Control>Escape'" }
 
-    - name: Install ExtensionManager
-      community.general.flatpak:
-        name: com.mattjakeman.ExtensionManager
 
     - name: Set favorite apps
       community.general.dconf:
         key: /org/gnome/shell/favorite-apps
         value: "['librewolf.desktop', 'org.gnome.Nautilus.desktop', 'kitty.desktop']"
+
+    - name: Install ExtensionManager
+      community.general.flatpak:
+        name: com.mattjakeman.ExtensionManager
