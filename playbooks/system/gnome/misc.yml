@@ -1,0 +1,32 @@
+---
+- name: Configure misc Gnome settings
+  hosts: localhost
+  connection: local
+  become: false
+
+  tasks:
+
+    - name: Add minimize and maximize buttons to windows layout
+      community.general.dconf:
+        key: /org/gnome/desktop/wm/preferences/button-layout
+        value: "'appmenu:minimize,maximize,close'"
+
+    - name: Make tapping the touchpad equivalent to clicking
+      community.general.dconf:
+        key: /org/gnome/desktop/peripherals/touchpad/tap-to-click
+        value: true
+
+    - name: Use 8 workspaces by default
+      community.general.dconf:
+        key: /org/gnome/desktop/wm/preferences/num-workspaces
+        value: 8
+
+    - name: Disable dynamic workspaces
+      community.general.dconf:
+        key: /org/gnome/mutter/dynamic-workspaces
+        value: false
+
+    - name: Set favorite apps
+      community.general.dconf:
+        key: /org/gnome/shell/favorite-apps
+        value: "['librewolf.desktop', 'org.gnome.Nautilus.desktop', 'kitty.desktop']"

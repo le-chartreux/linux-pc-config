@@ -6,7 +6,7 @@
 
 - import_playbook: installers.yml
 - import_playbook: fonts.yml
-- import_playbook: gnome.yml
+- import_playbook: gnome/gnome.yml
 - import_playbook: keyboard.yml
 - import_playbook: misc.yml
 - import_playbook: multimedia.yml

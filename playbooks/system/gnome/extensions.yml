@@ -1,0 +1,43 @@
+---
+- name: Configure Gnome extensions
+  hosts: localhost
+  connection: local
+  become: false
+
+  tasks:
+
+    - name: Install extensions
+      ansible.builtin.dnf:
+        name:
+          - gnome-shell-extension-appindicator
+          - gnome-shell-extension-blur-my-shell
+          - gnome-shell-extension-caffeine
+          - gnome-shell-extension-drive-menu
+          - gnome-shell-extension-freon
+          - gnome-shell-extension-just-perfection
+          - gnome-shell-extension-user-theme
+          - gnome-shell-extension-workspace-indicator
+      become: true
+
+    # - name: Enable available extensions - extensions just installed not show up until next login
+    #   block:
+    #     - name: Check if extension is enabled
+    #       ansible.builtin.command: gnome-extensions show {{ item }}
+    #       register: extension_show
+    #       changed_when: false
+
+    #     - name: Enable extension
+    #       ansible.builtin.command: gnome-extensions enable {{ item }}
+    #       changed_when: true
+    #       when: "'Enabled: No' in extension_show.stdout"
+
+    #     - name: Warn that extension not enabled because not found
+    #       ansible.builtin.debug:
+    #         msg: "Extension was not enabled because it doesn't exist"
+    #         warn: true
+    #       changed_when: false
+    #       when: "'t exist' in extension_show.stderr"
+
+    #   loop:
+    #     - gnome-shell-extension-appindicator
+    #     - gnome-shell-extension-blur-my-shell

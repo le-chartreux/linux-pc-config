@@ -1,0 +1,10 @@
+---
+- name: Things to do before configuring Gnome
+  hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: Install psutil (required to work with dconf)
+      ansible.builtin.dnf:
+        name: python3-psutil

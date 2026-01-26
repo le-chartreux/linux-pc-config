@@ -1,0 +1,89 @@
+---
+- name: Configure Gnome keybindings
+  hosts: localhost
+  connection: local
+  become: false
+
+  tasks:
+
+    - name: Setup keybindings
+      block:
+        - name: Change system keybindings
+          community.general.dconf:
+            key: "{{ item.key }}"
+            value: "{{ item.value }}"
+          loop:
+            # Window management
+            - { key: "/org/gnome/desktop/wm/keybindings/close", value: "['<Shift><Super>q']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/begin-move", value: "['<Super>m']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/maximize", value: "['<Super>Up']" }
+            - { key: "/org/gnome/settings-daemon/plugins/media-keys/help", value: "'[]'" }
+            # Workspace assignment
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-1", value: "['<Super>F1']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-2", value: "['<Super>F2']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-3", value: "['<Super>F3']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-4", value: "['<Super>F4']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-5", value: "['<Super>F5']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-6", value: "['<Super>F6']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-7", value: "['<Super>F7']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-8", value: "['<Super>F8']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-9", value: "['<Super>F9']" }
+            # Clear app switch shortcuts
+            - { key: "/org/gnome/shell/keybindings/switch-to-application-1", value: "@as []" }
+            - { key: "/org/gnome/shell/keybindings/switch-to-application-2", value: "@as []" }
+            - { key: "/org/gnome/shell/keybindings/switch-to-application-3", value: "@as []" }
+            - { key: "/org/gnome/shell/keybindings/switch-to-application-4", value: "@as []" }
+            - { key: "/org/gnome/shell/keybindings/switch-to-application-5", value: "@as []" }
+            - { key: "/org/gnome/shell/keybindings/switch-to-application-6", value: "@as []" }
+            - { key: "/org/gnome/shell/keybindings/switch-to-application-7", value: "@as []" }
+            - { key: "/org/gnome/shell/keybindings/switch-to-application-8", value: "@as []" }
+            - { key: "/org/gnome/shell/keybindings/switch-to-application-9", value: "@as []" }
+            # Workspace switching
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-1", value: "['<Super>1']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-2", value: "['<Super>2']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-3", value: "['<Super>3']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-4", value: "['<Super>4']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-5", value: "['<Super>5']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-6", value: "['<Super>6']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-7", value: "['<Super>7']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-8", value: "['<Super>8']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-9", value: "['<Super>9']" }
+
+        - name: Enable custom keybindings
+          block:
+            - name: Set custom keybindings list
+              community.general.dconf:
+                key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+                value: >
+                  [
+                    '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/',
+                    '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/',
+                    '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/'
+                  ]
+
+            - name: Set Super+Return binding for terminal
+              community.general.dconf:
+                key: "{{ item.key }}"
+                value: "{{ item.value }}"
+              loop:
+                - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name", value: "'Terminal'" }
+                - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command", value: "'kitty'" }
+                - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding", value: "'<Super>Return'" }
+
+            - name: Set Super+; binding for Characters app
+              community.general.dconf:
+                key: "{{ item.key }}"
+                value: "{{ item.value }}"
+              loop:
+                - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name", value: "'Characters'" }
+                - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command", value: "'gnome-characters'" }
+                - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding", value: "'<Super>semicolon'" }
+
+            - name: Set Ctrl+Shift+Esc binding for System Monitor app
+              community.general.dconf:
+                key: "{{ item.key }}"
+                value: "{{ item.value }}"
+              loop:
+                - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name", value: "'System Monitor'" }
+                - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command", value: "'gnome-system-monitor'" }
+                - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding", value: "'<Shift><Control>Escape'" }

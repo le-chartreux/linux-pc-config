@@ -1,0 +1,10 @@
+---
+- name: Configure Gnome
+  hosts: localhost
+  connection: local
+  become: true
+
+- import_playbook: init.yml
+- import_playbook: misc.yml
+- import_playbook: keybindings.yml
+- import_playbook: extensions.yml
