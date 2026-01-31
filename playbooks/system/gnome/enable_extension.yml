@@ -1,0 +1,17 @@
+---
+- name: Check if extension is enabled - extensions just installed not show up until next login
+  ansible.builtin.command: gnome-extensions show {{ extension_name }}
+  register: extension_show
+  changed_when: false
+  failed_when: extension_show.rc > 2
+
+- name: Enable extension
+  ansible.builtin.command: gnome-extensions enable {{ extension_name }}
+  changed_when: true
+  when: "'Enabled: No' in extension_show.stdout"
+
+- name: Warn that extension not enabled because not found
+  ansible.builtin.debug:
+    msg: "⚠️ Extension was not enabled because it doesn't exist - extensions just installed can't be enabled until next login ⚠️"
+  changed_when: false
+  when: "'t exist' in extension_show.stderr"

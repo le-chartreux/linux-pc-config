@@ -19,25 +19,15 @@
           - gnome-shell-extension-workspace-indicator
       become: true
 
-    # - name: Enable available extensions - extensions just installed not show up until next login
-    #   block:
-    #     - name: Check if extension is enabled
-    #       ansible.builtin.command: gnome-extensions show {{ item }}
-    #       register: extension_show
-    #       changed_when: false
-
-    #     - name: Enable extension
-    #       ansible.builtin.command: gnome-extensions enable {{ item }}
-    #       changed_when: true
-    #       when: "'Enabled: No' in extension_show.stdout"
-
-    #     - name: Warn that extension not enabled because not found
-    #       ansible.builtin.debug:
-    #         msg: "Extension was not enabled because it doesn't exist"
-    #         warn: true
-    #       changed_when: false
-    #       when: "'t exist' in extension_show.stderr"
-
-    #   loop:
-    #     - gnome-shell-extension-appindicator
-    #     - gnome-shell-extension-blur-my-shell
+    - name: Enable available extensions
+      ansible.builtin.include_tasks: "enable_extension.yml"
+      loop:
+        - appindicatorsupport@rgcjonas.gmail.com
+        - blur-my-shell@aunetx
+        - caffeine@patapon.info
+        - drive-menu@gnome-shell-extensions.gcampax.github.com
+        - freon@UshakovVasilii_Github.yahoo.com
+        - just-perfection-desktop@just-perfection
+        - user-theme@gnome-shell-extensions.gcampax.github.com
+      loop_control:
+        loop_var: extension_name
