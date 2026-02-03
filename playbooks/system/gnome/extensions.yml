@@ -13,6 +13,7 @@
           - gnome-shell-extension-blur-my-shell
           - gnome-shell-extension-caffeine
           - gnome-shell-extension-drive-menu
+          - gnome-shell-extension-pop-shell
           - gnome-shell-extension-freon
           - gnome-shell-extension-just-perfection
           - gnome-shell-extension-user-theme
@@ -31,3 +32,25 @@
         - user-theme@gnome-shell-extensions.gcampax.github.com
       loop_control:
         loop_var: extension_name
+
+    - name: Configure extensions
+      community.general.dconf:
+        key: "{{ item.key }}"
+        value: "{{ item.value }}"
+      loop:
+        - { key: "/org/fedorahosted/background-logo-extension/logo-size", value: "6" }
+        - { key: "/org/gnome/shell/extensions/blur-my-shell/panel/blur", value: "false" }
+        - { key: "/org/gnome/shell/extensions/just-perfection/theme", value: "true" }
+        - { key: "/org/gnome/shell/extensions/just-perfection/animation ", value: "4" }
+        - { key: "/org/gnome/shell/extensions/just-perfection/notification-banner-position", value: "2" }
+        - { key: "/org/gnome/shell/extensions/pop-shell/smart-gaps", value: "true" }
+        - { key: "/org/gnome/shell/extensions/pop-shell/mouse-cursor-focus-location", value: "uint32 4" }
+        - { key: "/org/gnome/shell/extensions/pop-shell/tile-by-default", value: "true" }
+
+    - name: Change Pop Shell keybindings
+      community.general.dconf:
+        key: "{{ item.key }}"
+        value: "{{ item.value }}"
+      loop:
+        # To don't colide with opening terminal.
+        - { key: "/org/gnome/shell/extensions/pop-shell/tile-enter", value: "['<Shift><Super>Return']" }
