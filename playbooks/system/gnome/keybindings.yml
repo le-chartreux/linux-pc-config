@@ -28,7 +28,7 @@
             - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-7", value: "['<Super>F7']" }
             - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-8", value: "['<Super>F8']" }
             - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-9", value: "['<Super>F9']" }
-            # Clear app switch shortcuts
+            # Remove unused
             - { key: "/org/gnome/shell/keybindings/switch-to-application-1", value: "@as []" }
             - { key: "/org/gnome/shell/keybindings/switch-to-application-2", value: "@as []" }
             - { key: "/org/gnome/shell/keybindings/switch-to-application-3", value: "@as []" }
@@ -38,6 +38,15 @@
             - { key: "/org/gnome/shell/keybindings/switch-to-application-7", value: "@as []" }
             - { key: "/org/gnome/shell/keybindings/switch-to-application-8", value: "@as []" }
             - { key: "/org/gnome/shell/keybindings/switch-to-application-9", value: "@as []" }
+            - { key: "/org/gnome/settings-daemon/plugins/media-keys/screenreader", value: "@as []" }
+            - { key: "/org/gnome/settings-daemon/plugins/media-keys/magnifier-zoom-in", value: "@as []" }
+            - { key: "/org/gnome/settings-daemon/plugins/media-keys/magnifier-zoom-in", value: "@as []" }
+            - { key: "/org/gnome/settings-daemon/plugins/media-keys/magnifier-zoom-in", value: "@as []" }
+            - { key: "/org/gnome/settings-daemon/plugins/media-keys/magnifier-zoom-in", value: "@as []" }
+            - { key: "/org/gnome/settings-daemon/plugins/media-keys/home", value: "@as []" }
+            - { key: "/org/gnome/settings-daemon/plugins/media-keys/email", value: "@as []" }
+            - { key: "/org/gnome/settings-daemon/plugins/media-keys/help", value: "@as []" }
+            - { key: "/org/gnome/settings-daemon/plugins/media-keys/www", value: "@as []" }
             # Workspace switching
             - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-1", value: "['<Super>1']" }
             - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-2", value: "['<Super>2']" }
