@@ -30,3 +30,17 @@
       community.general.dconf:
         key: /org/gnome/shell/favorite-apps
         value: "['librewolf.desktop', 'org.gnome.Nautilus.desktop', 'kitty.desktop']"
+
+    - name: Enable night light all the time
+      community.general.dconf:
+        key: "{{ item.key }}"
+        value: "{{ item.value }}"
+      loop:
+        - { key: "/org/gnome/settings-daemon/plugins/color/night-light-enabled", value: "true" }
+        - { key: "/org/gnome/settings-daemon/plugins/color/night-light-schedule-from", value: "12.0" }
+        - { key: "/org/gnome/settings-daemon/plugins/color/night-light-schedule-to", value: "12.0" }
+
+    - name: Use dark theme
+      community.general.dconf:
+        key: "/org/gnome/desktop/interface/color-scheme"
+        value: "'prefer-dark'"
