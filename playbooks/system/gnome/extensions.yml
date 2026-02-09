@@ -16,7 +16,6 @@
           - gnome-shell-extension-pop-shell
           - gnome-shell-extension-freon
           - gnome-shell-extension-just-perfection
-          - gnome-shell-extension-user-theme
           - gnome-shell-extension-workspace-indicator
       become: true
 
