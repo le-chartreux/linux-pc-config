@@ -44,3 +44,8 @@
       community.general.dconf:
         key: "/org/gnome/desktop/interface/color-scheme"
         value: "'prefer-dark'"
+
+    - name: Set accent color
+      community.general.dconf:
+        key: "/org/gnome/desktop/interface/accent-color"
+        value: "'purple'"
