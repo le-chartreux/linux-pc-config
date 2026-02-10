@@ -19,6 +19,7 @@ Many tasks are inspired by [devangshekhawat's Fedora-43-Post-Install-Guide](http
   - [✋ Manual Steps](#-manual-steps)
     - [🦑 GitHub SSH Key](#-github-ssh-key)
   - [🧪 For Development](#-for-development)
+    - [📝 TODOs](#-todos)
 
 ## 🐧 Usage
 
@@ -89,3 +90,9 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -e ".[dev]"
 ```
+
+### 📝 TODOs
+
+- Cargo setup.
+- Tmux config (or zellij?): persistency & fancy.
+- Try Helix VS neovim.
