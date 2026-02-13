@@ -1,0 +1,42 @@
+---
+- name: Configure Python toolchain
+  hosts: localhost
+  connection: local
+  become: false
+
+  vars:
+    uv_script: /tmp/uv-init.sh
+
+  tasks:
+
+    - name: Install pip (for compatibility)
+      ansible.builtin.dnf:
+        name: python3-pip
+      become: true
+
+    - name: Install uv (Python package and project manager)
+      block:
+        - name: Check if uv is already installed
+          ansible.builtin.command: which uv
+          register: uv_installed
+          changed_when: false
+          failed_when: uv_installed.rc > 2
+
+        - name: Download uv installer
+          ansible.builtin.get_url:
+            url: https://astral.sh/uv/install.sh
+            dest: "{{ uv_script }}"
+            mode: '0755'
+          when: uv_installed.rc != 0
+
+        - name: Run uv installer (non-interactive)
+          ansible.builtin.command: "{{ uv_script }}"
+          when: uv_installed.rc != 0
+          changed_when: true
+
+    - name: Install bpython
+      become: false
+      # Until the shell is restarted, uv isn't in the $PATH.
+      ansible.builtin.command: "{{ ansible_facts['env'].HOME }}/.local/bin/uv tool install bpython"
+      register: install_result
+      changed_when: install_result.stdout != "`bpython` is already installed"

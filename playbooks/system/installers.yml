@@ -85,18 +85,4 @@
             state: link
             force: true
 
-    - name: Install Pip
-      ansible.builtin.dnf:
-        name: python3-pip
-
-    - name: Configure Pipx
-      block:
-        - name: Install Pipx
-          ansible.builtin.dnf:
-            name: pipx
-
-        - name: Enable Pipx
-          ansible.builtin.command: pipx ensurepath
-          become: false
-          register: ensurepath_output
-          changed_when: "'/.local/bin is already in PATH' not in ensurepath_output.stdout"
+    # cargo, pip & uv are setup in apps/

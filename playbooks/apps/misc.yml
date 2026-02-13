@@ -18,13 +18,6 @@
           - wl-clipboard # for wl-copy
           - zoxide # better cd
 
-    - name: Install bpython
-      become: false
-      community.general.pipx:
-        name: bpython
-        executable: /usr/bin/pipx
-        state: present
-
     - name: Install Legcord (custom Discord client)
       ansible.builtin.dnf:
         name: legcord
