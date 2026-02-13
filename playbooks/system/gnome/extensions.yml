@@ -28,7 +28,6 @@
         - drive-menu@gnome-shell-extensions.gcampax.github.com
         - freon@UshakovVasilii_Github.yahoo.com
         - just-perfection-desktop@just-perfection
-        - user-theme@gnome-shell-extensions.gcampax.github.com
       loop_control:
         loop_var: extension_name
 
