@@ -3,6 +3,7 @@
   hosts: localhost
   connection: local
 
+- import_playbook: rust.yml
 - import_playbook: librewolf.yml
 - import_playbook: misc.yml
 - import_playbook: vscode.yml

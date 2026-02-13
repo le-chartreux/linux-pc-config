@@ -1,0 +1,28 @@
+---
+- name: Configure Rust toolchain
+  hosts: all
+  become: false
+  vars:
+    rustup_script: /tmp/rustup-init.sh
+
+  tasks:
+
+    - name: Check if Rust is already installed
+      ansible.builtin.command: which rustc
+      register: rust_installed
+      changed_when: false
+      failed_when: rust_installed.rc > 2
+
+    - name: Download rustup installer
+      ansible.builtin.get_url:
+        url: https://sh.rustup.rs
+        dest: "{{ rustup_script }}"
+        mode: '0755'
+      when: rust_installed.rc != 0
+
+    - name: Run rustup installer (non-interactive)
+      ansible.builtin.command: "{{ rustup_script }} -y"
+      when: rust_installed.rc != 0
+      changed_when: true
+
+    # Until the shell is restarted, cargo won't be in the $PATH.
