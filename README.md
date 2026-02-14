@@ -94,4 +94,3 @@ pip install -e ".[dev]"
 ### 📝 TODOs
 
 - Cargo setup.
-- Tmux config (or zellij?): persistency & fancy.

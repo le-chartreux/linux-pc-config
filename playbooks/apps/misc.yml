@@ -14,7 +14,7 @@
           - fzf # fuzzy finder
           - neovim # newer Vim
           - ripgrep # better grep
-          - tmux # terminal multiplexer
+          - zellij # terminal multiplexer - newer tmux
           - wl-clipboard # for wl-copy
           - zoxide # better cd
 
