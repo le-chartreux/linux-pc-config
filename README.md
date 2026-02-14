@@ -95,4 +95,3 @@ pip install -e ".[dev]"
 
 - Cargo setup.
 - Tmux config (or zellij?): persistency & fancy.
-- Try Helix VS neovim.
