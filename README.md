@@ -48,8 +48,6 @@ Many tasks are inspired by [devangshekhawat's Fedora-43-Post-Install-Guide](http
 
 5. Restart your computer to apply all system-level changes.
 
-6. Do the [manual steps](#-manual-steps) you haven't done yet.
-
 ## 🛠️ Troubleshooting
 
 ### 💿 EFI Partition Error
