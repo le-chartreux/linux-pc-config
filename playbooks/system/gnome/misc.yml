@@ -49,3 +49,13 @@
       community.general.dconf:
         key: "/org/gnome/desktop/interface/accent-color"
         value: "'purple'"
+
+    - name: Set clock format to 24h (Gnome)
+      community.general.dconf:
+        key: "/org/gnome/desktop/interface/clock-format"
+        value: "'24h'"
+    
+    - name: Set clock format to 24h (GTK)
+      community.general.dconf:
+        key: "/org/gtk/settings/file-chooser/clock-format"
+        value: "'24h'"
