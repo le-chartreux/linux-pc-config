@@ -18,7 +18,8 @@ Many tasks are inspired by [devangshekhawat's Fedora-43-Post-Install-Guide](http
     - [💿 EFI Partition Error](#-efi-partition-error)
   - [✋ Manual Steps](#-manual-steps)
     - [🦑 GitHub SSH Key](#-github-ssh-key)
-  - [📝 TODOs](#-todos)
+  - [🧪 For Development](#-for-development)
+    - [📝 TODOs](#-todos)
 
 ## 🐧 Usage
 
@@ -32,7 +33,7 @@ Many tasks are inspired by [devangshekhawat's Fedora-43-Post-Install-Guide](http
    # Also change the branch if necessary.
    ```
 
-3. Create a virtual environment:
+3. Create a virtual environment (skip is you're using [uv](https://docs.astral.sh/uv/)):
 
    ```bash
    python -m venv .venv
@@ -44,6 +45,8 @@ Many tasks are inspired by [devangshekhawat's Fedora-43-Post-Install-Guide](http
 
    ```bash
    ansible-playbook playbooks/site.yml --ask-become-pass --verbose
+   # Or, with uv:
+   uv run ansible-playbook playbooks/site.yml --ask-become-pass --verbose
    ```
 
 5. Restart your computer to apply all system-level changes.
@@ -78,6 +81,22 @@ Some steps aren’t automated because they either can’t be or would be too inv
 3. Add the key to your GitHub account:  
    👉 [GitHub SSH Keys](https://github.com/settings/ssh/new)
 
-## 📝 TODOs
+## 🧪 For Development
+
+Set up a development environment:
+
+```bash
+git clone git@github.com:le-chartreux/linux-pc-config.git
+cd ./linux-pc-config
+# With uv:
+uv run ansible-playbook playbooks/site.yml --ask-become-pass --verbose
+# With pip:
+python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+ansible-playbook playbooks/site.yml --ask-become-pass --verbose
+```
+
+### 📝 TODOs
 
 - Cargo setup.

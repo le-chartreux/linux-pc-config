@@ -1,23 +1,18 @@
 [project]
-
 name = "linux-pc-config"
 description = "Configuration of my Linux PC."
-authors = [
-    { name = "Nathan Rousseau", email = "le-chartreux-vert@protonmail.com" },
-]
-keywords = ["linux", "configuration", "fedora", "ansible"]
+version = "0.0.0" # A version is required but there's nothing to build here.
+readme = "README.md"
 requires-python = ">=3.13"
+keywords = ["linux", "configuration", "fedora", "ansible"]
+
+authors = [ { name = "Nathan Rousseau", email = "le-chartreux-vert@protonmail.com" } ]
+
 dependencies = ["ansible>=11.4.0"]
 
-dynamic = ["version"]
+[dependency-groups]
+dev = ["ansible-dev-tools>=26.1.0"]
 
 [project.urls]
 Repository = "https://github.com/le-chartreux/linux-pc-config.git"
 Issues = "https://github.com/le-chartreux/linux-pc-config/issues"
-
-[tool.setuptools_scm]
-# this section should exist even if it is empty to allow setuptools_scm to work
-
-[build-system]
-requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
-build-backend = "setuptools.build_meta"
