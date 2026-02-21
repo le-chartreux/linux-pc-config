@@ -6,6 +6,8 @@
 
   vars:
     uv_script: /tmp/uv-init.sh
+    uv_bin_folder: "{{ ansible_facts['env'].HOME }}/.local/bin"
+    uv_bin: "{{ uv_bin_folder }}/uv"
 
   tasks:
 
@@ -16,27 +18,31 @@
 
     - name: Install uv (Python package and project manager)
       block:
-        - name: Check if uv is already installed
-          ansible.builtin.command: which uv
-          register: uv_installed
-          changed_when: false
-          failed_when: uv_installed.rc > 2
+        - name: Check if uv is installed
+          ansible.builtin.stat:
+            path: "{{ uv_bin }}"
+          register: uv_stat
 
         - name: Download uv installer
           ansible.builtin.get_url:
             url: https://astral.sh/uv/install.sh
             dest: "{{ uv_script }}"
             mode: '0755'
-          when: uv_installed.rc != 0
+          when: not uv_stat.stat.exists
 
         - name: Run uv installer (non-interactive)
           ansible.builtin.command: "{{ uv_script }}"
-          when: uv_installed.rc != 0
+          when: not uv_stat.stat.exists
           changed_when: true
+
+    - name: Check if bpython is installed via uv
+      ansible.builtin.stat:
+        path: "{{ uv_bin_folder }}/bpython"
+      register: bpython_stat
 
     - name: Install bpython
       become: false
       # Until the shell is restarted, uv isn't in the $PATH.
-      ansible.builtin.command: "{{ ansible_facts['env'].HOME }}/.local/bin/uv tool install bpython"
-      register: install_result
-      changed_when: install_result.stdout != "`bpython` is already installed"
+      ansible.builtin.command: "{{ uv_bin }} tool install bpython"
+      when: not bpython_stat.stat.exists
+      changed_when: true
