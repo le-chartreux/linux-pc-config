@@ -8,3 +8,4 @@
 - import_playbook: misc.yml
 - import_playbook: extensions.yml
 - import_playbook: keybindings.yml
+- import_playbook: wallpaper.yml

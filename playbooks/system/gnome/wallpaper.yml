@@ -1,0 +1,35 @@
+---
+- name: Set a wallpaper
+  hosts: localhost
+  connection: local
+  become: false
+
+  vars:
+    destination_folder: "{{ ansible_facts['env'].HOME }}/.local/share/backgrounds/"
+    destination_file: "{{ destination_folder }}/neon-wave-grey.jpg"
+    wallpaper_uri: "file://{{ destination_file }}"
+
+  tasks:
+
+    - name: Ensure wallpaper directory exists
+      ansible.builtin.file:
+        path: "{{ destination_folder }}"
+        state: directory
+        mode: '0700' # drwx------
+
+    - name: Download wallpaper
+      ansible.builtin.get_url:
+        url: https://w.wallhaven.cc/full/w5/wallhaven-w51g66.png
+        dest: "{{ destination_file }}"
+        mode: '0644' # -rw-r--r--
+
+    - name: Set wallpaper
+      community.general.dconf:
+        key: "{{ item.key }}"
+        value: "{{ item.value }}"
+      loop:
+        - { key: "/org/gnome/desktop/background/color-shading-type", value: "'solid'" }
+        - { key: "/org/gnome/desktop/background/picture-uri", value: "'{{ wallpaper_uri }}'" }
+        - { key: "/org/gnome/desktop/background/picture-uri-dark", value: "'{{ wallpaper_uri }}'" }
+        - { key: "/org/gnome/desktop/screensaver/color-shading-type", value: "'solid'" }
+        - { key: "/org/gnome/desktop/screensaver/picture-uri", value: "'{{ wallpaper_uri }}'" }

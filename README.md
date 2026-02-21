@@ -4,8 +4,6 @@
 
 If you want to adapt it to your needs, feel free to [fork it](https://github.com/le-chartreux/linux-pc-config/fork)!
 
-Many tasks are inspired by [devangshekhawat's Fedora-43-Post-Install-Guide](https://github.com/devangshekhawat/Fedora-43-Post-Install-Guide) - thanks for the excellent base!
-
 > [!NOTE]  
 > Tested only on my Lenovo ThinkPad X1 Carbon Gen 10. Should work with a dual-boot setup alongside Windows 11 (it was working before I stopped dual-booting).
 
@@ -20,6 +18,7 @@ Many tasks are inspired by [devangshekhawat's Fedora-43-Post-Install-Guide](http
     - [🦑 GitHub SSH Key](#-github-ssh-key)
   - [🧪 For Development](#-for-development)
     - [📝 TODOs](#-todos)
+  - [📣 Credits](#-credits)
 
 ## 🐧 Usage
 
@@ -100,3 +99,8 @@ ansible-playbook playbooks/site.yml --ask-become-pass --verbose
 ### 📝 TODOs
 
 - Cargo setup.
+
+## 📣 Credits
+
+- [Vincent Trinidad](https://www.vincenttrinidadart.com/), for the beautiful wallpaper.
+- [devangshekhawat's Fedora-43-Post-Install-Guide](https://github.com/devangshekhawat/Fedora-43-Post-Install-Guide), for some important post-install commands.
