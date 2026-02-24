@@ -4,13 +4,15 @@
   become: false
   vars:
     rustup_script: /tmp/rustup-init.sh
-    rust_bin: "{{ ansible_facts['env'].HOME }}/.cargo/bin/rustc"
+    cargo_folder: "{{ ansible_facts['env'].HOME }}/.cargo/bin/"
+    rustc_bin: "{{ cargo_folder }}/rustc"
+    cargo_bin: "{{ cargo_folder }}/cargo"
 
   tasks:
 
     - name: Check if Rust is already installed
       ansible.builtin.stat:
-        path: "{{ rust_bin }}"
+        path: "{{ rustc_bin }}"
       register: rust_stat
 
     - name: Download rustup installer
@@ -26,3 +28,9 @@
       changed_when: true
 
     # Until the shell is restarted, cargo won't be in the $PATH.
+
+    - name: Install nextest
+      community.general.cargo:
+        name: cargo-nextest
+        executable: "{{ cargo_bin }}"
+        locked: true
