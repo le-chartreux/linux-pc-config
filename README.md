@@ -17,7 +17,6 @@ If you want to adapt it to your needs, feel free to [fork it](https://github.com
   - [✋ Manual Steps](#-manual-steps)
     - [🦑 GitHub SSH Key](#-github-ssh-key)
   - [🧪 For Development](#-for-development)
-    - [📝 TODOs](#-todos)
   - [📣 Credits](#-credits)
 
 ## 🐧 Usage
@@ -95,10 +94,6 @@ source .venv/bin/activate
 pip install -e ".[dev]"
 ansible-playbook playbooks/site.yml --ask-become-pass --verbose
 ```
-
-### 📝 TODOs
-
-- Cargo setup.
 
 ## 📣 Credits
 
