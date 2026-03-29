@@ -2,3 +2,4 @@
 playbooks/apps/apps.yml name[play] skip
 playbooks/site.yml name[play] skip
 playbooks/system/system.yml name[play] skip
+playbooks/user/user.yml name[play] skip

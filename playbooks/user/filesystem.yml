@@ -1,0 +1,12 @@
+---
+- name: Configure the user filesystem
+  hosts: localhost
+  connection: local
+  become: false
+
+  tasks:
+    - name: Document/work/ exists
+      ansible.builtin.file:
+        path: ~/Documents/work/
+        state: directory
+        mode: "u=rwx,g=rx,o=rx"

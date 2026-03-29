@@ -1,0 +1,7 @@
+---
+- name: Configure the user environment
+  hosts: localhost
+  connection: local
+  become: true
+
+- import_playbook: filesystem.yml
