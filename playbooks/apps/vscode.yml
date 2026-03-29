@@ -17,6 +17,7 @@
       - pkief.material-icon-theme
       - redhat.ansible
       - redhat.vscode-yaml
+      - streetsidesoftware.code-spell-checker
       - tamasfe.even-better-toml
       - yzhang.markdown-all-in-one
 
