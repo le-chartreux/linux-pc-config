@@ -9,6 +9,10 @@
     cargo_bin: "{{ cargo_folder }}/cargo"
 
   tasks:
+    - name: Install gcc (linker required)
+      ansible.builtin.dnf:
+        name: gcc
+      become: true
 
     - name: Check if Rust is already installed
       ansible.builtin.stat:
