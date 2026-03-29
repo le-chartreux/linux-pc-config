@@ -1,4 +1,4 @@
 # No need to name playbooks in those playbooks as they're just imports.
-playbooks/site.yml name[play] skip
 playbooks/apps/apps.yml name[play] skip
+playbooks/site.yml name[play] skip
 playbooks/system/system.yml name[play] skip
