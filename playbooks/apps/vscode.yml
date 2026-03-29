@@ -20,6 +20,7 @@
       - redhat.vscode-yaml
       - streetsidesoftware.code-spell-checker
       - tamasfe.even-better-toml
+      - usernamehw.errorlens
       - yzhang.markdown-all-in-one
 
   tasks:
