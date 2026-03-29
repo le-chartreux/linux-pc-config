@@ -6,6 +6,7 @@
 
   vars:
     extensions_to_install:
+      - asvetliakov.vscode-neovim
       - catppuccin.catppuccin-vsc
       - charliermarsh.ruff
       - davidanson.vscode-markdownlint
