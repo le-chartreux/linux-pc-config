@@ -49,6 +49,8 @@ If you want to adapt it to your needs, feel free to [fork it](https://github.com
 
 5. Restart your computer to apply all system-level changes.
 
+6. Run it one more time to apply certain changes that require a second pass, such as those related to GNOME extensions.
+
 ## 🛠️ Troubleshooting
 
 ### 💿 EFI Partition Error
