@@ -18,9 +18,9 @@
           - wl-clipboard # for wl-copy
           - zoxide # better cd
 
-    - name: Install Legcord (custom Discord client)
+    - name: Install Discord
       ansible.builtin.dnf:
-        name: legcord
+        name: discord
 
     - name: Install Signal
       community.general.flatpak:
