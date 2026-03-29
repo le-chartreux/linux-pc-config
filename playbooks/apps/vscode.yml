@@ -31,12 +31,12 @@
       become: true
 
     - name: List VSCode's extensions
-      ansible.builtin.command: code --list-extensions
+      ansible.builtin.command: snap run code --list-extensions
       register: installed_extensions
       changed_when: false
 
     - name: Install VSCode's extensions
-      ansible.builtin.command: code --install-extension {{ item }}
+      ansible.builtin.command: snap run code --install-extension {{ item }}
       loop: "{{ extensions_to_install }}"
       when: item not in installed_extensions.stdout_lines
       changed_when: true
