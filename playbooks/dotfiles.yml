@@ -14,7 +14,7 @@
         name: stow
       become: true
 
-    - name: Clone stow repo
+    - name: Clone stow repo # noqa: latest
       ansible.builtin.git:
         repo: "{{ stow_repo }}"
         dest: "{{ ansible_facts['env'].HOME }}/{{ stow_destination_name }}"
