@@ -10,6 +10,7 @@
       - catppuccin.catppuccin-vsc
       - charliermarsh.ruff
       - davidanson.vscode-markdownlint
+      - jebbs.plantuml
       - ms-python.debugpy
       - ms-python.python
       - ms-python.vscode-pylance
