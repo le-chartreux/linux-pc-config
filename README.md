@@ -11,6 +11,7 @@ If you want to adapt it to your needs, feel free to [fork it](https://github.com
 
 - [linux-pc-config 💻🐧🔧](#linux-pc-config-)
   - [📑 Table of Contents](#-table-of-contents)
+  - [🎬 Showcase](#-showcase)
   - [🐧 Usage](#-usage)
   - [🛠️ Troubleshooting](#️-troubleshooting)
     - [💿 EFI Partition Error](#-efi-partition-error)
@@ -18,6 +19,18 @@ If you want to adapt it to your needs, feel free to [fork it](https://github.com
     - [🦑 GitHub SSH Key](#-github-ssh-key)
   - [🧪 For Development](#-for-development)
   - [📣 Credits](#-credits)
+
+## 🎬 Showcase
+
+<figure align="center">
+  <img src="docs/assets/ansible-execution.gif" alt="Tool Execution"/>
+  <figcaption><strong>Execution</strong></figcaption>
+</figure>
+
+<figure align="center">
+  <img src="docs/assets/result.gif" alt="Tool Result"/>
+  <figcaption><strong>Result</strong></figcaption>
+</figure>
 
 ## 🐧 Usage
 
