@@ -28,6 +28,7 @@
         - drive-menu@gnome-shell-extensions.gcampax.github.com
         - freon@UshakovVasilii_Github.yahoo.com
         - just-perfection-desktop@just-perfection
+        - pop-shell@system76.com
       loop_control:
         loop_var: extension_name
 
