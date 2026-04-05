@@ -22,15 +22,13 @@ If you want to adapt it to your needs, feel free to [fork it](https://github.com
 
 ## 🎬 Showcase
 
-<figure align="center">
-  <img src="docs/assets/ansible-execution.gif" alt="Tool Execution"/>
-  <figcaption><strong>Execution</strong></figcaption>
-</figure>
+<div align="center">
+  <img src="docs/assets/ansible-execution.gif" alt="Execution" />
+  <p><strong>Execution</strong></p>
 
-<figure align="center">
-  <img src="docs/assets/result.gif" alt="Tool Result"/>
-  <figcaption><strong>Result</strong></figcaption>
-</figure>
+  <img src="docs/assets/result.gif" alt="Result" />
+  <p><strong>Result</strong></p>
+</div>
 
 ## 🐧 Usage
 
