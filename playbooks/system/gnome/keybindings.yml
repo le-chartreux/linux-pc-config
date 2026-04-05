@@ -66,8 +66,7 @@
                 value: >
                   [
                     '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/',
-                    '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/',
-                    '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/'
+                    '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/'
                   ]
 
             - name: Set Super+Return binding for terminal
@@ -79,20 +78,11 @@
                 - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command", value: "'kitty'" }
                 - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding", value: "'<Super>Return'" }
 
-            - name: Set Super+; binding for Characters app
-              community.general.dconf:
-                key: "{{ item.key }}"
-                value: "{{ item.value }}"
-              loop:
-                - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name", value: "'Characters'" }
-                - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command", value: "'gnome-characters'" }
-                - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding", value: "'<Super>semicolon'" }
-
             - name: Set Ctrl+Shift+Esc binding for System Monitor app
               community.general.dconf:
                 key: "{{ item.key }}"
                 value: "{{ item.value }}"
               loop:
-                - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/name", value: "'System Monitor'" }
-                - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/command", value: "'gnome-system-monitor'" }
-                - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/binding", value: "'<Shift><Control>Escape'" }
+                - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/name", value: "'System Monitor'" }
+                - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/command", value: "'gnome-system-monitor'" }
+                - { key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/binding", value: "'<Shift><Control>Escape'" }
