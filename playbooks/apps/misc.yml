@@ -12,6 +12,7 @@
           - eza # better ls
           - fd-find # newer find
           - fzf # fuzzy finder
+          - lazygit # git TUI used by LazyVim
           - neovim # newer Vim
           - ripgrep # better grep
           - zellij # terminal multiplexer - newer tmux
