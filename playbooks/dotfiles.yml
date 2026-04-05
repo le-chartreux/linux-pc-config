@@ -20,5 +20,5 @@
         dest: "{{ ansible_facts['env'].HOME }}/{{ stow_destination_name }}"
 
     - name: Get dotfiles from ~/dotfiles
-      ansible.builtin.command: "stow -d ~/{{ stow_destination_name }} ."
+      ansible.builtin.command: "stow --no-folding -d ~/{{ stow_destination_name }} ."
       changed_when: true
