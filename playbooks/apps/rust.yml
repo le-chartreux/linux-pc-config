@@ -33,6 +33,11 @@
 
     # Until the shell is restarted, cargo won't be in the $PATH.
 
+    - name: Install rust-analyzer
+      ansible.builtin.command:
+        cmd: "{{ cargo_folder }}/rustup component add rust-analyzer --toolchain stable"
+        creates: "{{ ansible_facts['env'].HOME }}/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rust-analyzer"
+
     - name: Install nextest
       community.general.cargo:
         name: cargo-nextest
