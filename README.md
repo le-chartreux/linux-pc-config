@@ -104,7 +104,7 @@ uv run ansible-playbook playbooks/site.yml --ask-become-pass --verbose
 # With pip:
 python -m venv .venv
 source .venv/bin/activate
-pip install -e ".[dev]"
+pip install . --group dev
 ansible-playbook playbooks/site.yml --ask-become-pass --verbose
 ```
 
