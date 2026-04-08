@@ -14,6 +14,7 @@
           - fzf # fuzzy finder
           - lazygit # git TUI used by LazyVim
           - neovim # newer Vim
+          - python3-neovim # Optional for Neovim
           - ripgrep # better grep
           - zellij # terminal multiplexer - newer tmux
           - wl-clipboard # for wl-copy
