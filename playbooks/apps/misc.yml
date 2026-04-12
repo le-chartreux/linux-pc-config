@@ -35,3 +35,7 @@
     - name: Install GIMP
       ansible.builtin.dnf:
         name: gimp
+
+    - name: Install Kdenlive (FOSS video editor)
+      ansible.builtin.dnf:
+        name: kdenlive
