@@ -31,3 +31,7 @@
     - name: Install Kitty (terminal emulator)
       ansible.builtin.dnf:
         name: kitty
+
+    - name: Install GIMP
+      ansible.builtin.dnf:
+        name: gimp
