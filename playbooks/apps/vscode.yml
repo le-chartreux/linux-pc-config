@@ -6,6 +6,7 @@
 
   vars:
     extensions_to_install:
+      - astral-sh.ty
       - asvetliakov.vscode-neovim
       - catppuccin.catppuccin-vsc
       - charliermarsh.ruff
