@@ -12,14 +12,14 @@
           - eza # better ls
           - fd-find # newer find
           - fzf # fuzzy finder
+          - jpegoptim # compress jpeg pictures
           - lazygit # git TUI used by LazyVim
           - neovim # newer Vim
           - python3-neovim # Optional for Neovim
           - ripgrep # better grep
-          - zellij # terminal multiplexer - newer tmux
           - wl-clipboard # for wl-copy
+          - zellij # terminal multiplexer - newer tmux
           - zoxide # better cd
-          - jpegoptim # compress jpeg pictures
 
     - name: Install Discord
       ansible.builtin.dnf:
