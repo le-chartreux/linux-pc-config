@@ -9,6 +9,7 @@
       ansible.builtin.dnf:
         name:
           - bat # cat with color
+          - perl-Image-ExifTool # manage EXIF of pictures
           - eza # better ls
           - fd-find # newer find
           - fzf # fuzzy finder
