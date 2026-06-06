@@ -19,6 +19,7 @@
           - zellij # terminal multiplexer - newer tmux
           - wl-clipboard # for wl-copy
           - zoxide # better cd
+          - jpegoptim # compress jpeg pictures
 
     - name: Install Discord
       ansible.builtin.dnf:
