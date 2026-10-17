@@ -17,17 +17,26 @@
             - { key: "/org/gnome/desktop/wm/keybindings/close", value: "['<Shift><Super>q']" }
             - { key: "/org/gnome/desktop/wm/keybindings/begin-move", value: "['<Super>m']" }
             - { key: "/org/gnome/desktop/wm/keybindings/maximize", value: "['<Super>Up']" }
-            - { key: "/org/gnome/settings-daemon/plugins/media-keys/help", value: "'[]'" }
+            # Workspace switching
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-1", value: "['<Super>1']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-2", value: "['<Super>2']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-3", value: "['<Super>3']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-4", value: "['<Super>4']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-5", value: "['<Super>5']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-6", value: "['<Super>6']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-7", value: "['<Super>7']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-8", value: "['<Super>8']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-9", value: "['<Super>9']" }
             # Workspace assignment
-            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-1", value: "['<Super>F1']" }
-            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-2", value: "['<Super>F2']" }
-            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-3", value: "['<Super>F3']" }
-            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-4", value: "['<Super>F4']" }
-            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-5", value: "['<Super>F5']" }
-            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-6", value: "['<Super>F6']" }
-            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-7", value: "['<Super>F7']" }
-            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-8", value: "['<Super>F8']" }
-            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-9", value: "['<Super>F9']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-1", value: "['<Shift><Super>1']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-2", value: "['<Shift><Super>2']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-3", value: "['<Shift><Super>3']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-4", value: "['<Shift><Super>4']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-5", value: "['<Shift><Super>5']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-6", value: "['<Shift><Super>6']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-7", value: "['<Shift><Super>7']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-8", value: "['<Shift><Super>8']" }
+            - { key: "/org/gnome/desktop/wm/keybindings/move-to-workspace-9", value: "['<Shift><Super>9']" }
             # Remove unused
             - { key: "/org/gnome/shell/keybindings/switch-to-application-1", value: "@as []" }
             - { key: "/org/gnome/shell/keybindings/switch-to-application-2", value: "@as []" }
@@ -47,16 +56,7 @@
             - { key: "/org/gnome/settings-daemon/plugins/media-keys/email", value: "@as []" }
             - { key: "/org/gnome/settings-daemon/plugins/media-keys/help", value: "@as []" }
             - { key: "/org/gnome/settings-daemon/plugins/media-keys/www", value: "@as []" }
-            # Workspace switching
-            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-1", value: "['<Super>1']" }
-            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-2", value: "['<Super>2']" }
-            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-3", value: "['<Super>3']" }
-            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-4", value: "['<Super>4']" }
-            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-5", value: "['<Super>5']" }
-            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-6", value: "['<Super>6']" }
-            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-7", value: "['<Super>7']" }
-            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-8", value: "['<Super>8']" }
-            - { key: "/org/gnome/desktop/wm/keybindings/switch-to-workspace-9", value: "['<Super>9']" }
+            - { key: "/org/gnome/settings-daemon/plugins/media-keys/help", value: "'[]'" } # Unbind to prevent misclicks.
 
         - name: Enable custom keybindings
           block:
