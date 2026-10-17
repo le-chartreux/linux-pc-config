@@ -26,7 +26,6 @@
           evdev:{{ keyboard_modalias }}*
            KEYBOARD_KEY_c9=reserved  # PAGEUP disabled
            KEYBOARD_KEY_d1=reserved  # PAGEDOWN disabled
-           KEYBOARD_KEY_29=102nd     # ² to ><
         owner: root
         group: root
         mode: "0644"
