@@ -15,7 +15,6 @@
           - gnome-shell-extension-drive-menu
           - gnome-shell-extension-freon
           - gnome-shell-extension-just-perfection
-          - gnome-shell-extension-pop-shell
           - gnome-shell-extension-workspace-indicator
       become: true
 
